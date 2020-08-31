@@ -7,20 +7,20 @@
 //
 
 import UIKit
-import Alamofire
+//import Alamofire
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        self.userAlamofire()
+        //self.userAlamofire()
     }
 
     func userAlamofire()  {
-        SessionManager.default.request("https://httpbin.org/get").responseJSON { response in
-            debugPrint(response)
-        }
+//        SessionManager.default.request("https://httpbin.org/get").responseJSON { response in
+//            debugPrint(response)
+//        }
     }
 
 }
