@@ -23,5 +23,8 @@ class ViewController: UIViewController {
         }
     }
 
+    static func returnTheAppName() -> String {
+        return "TestProject"
+    }
 }
 
