@@ -25,7 +25,7 @@ class ViewController: UIViewController {
 
     //returns the app name
     static func returnTheAppName() -> String {
-        //return "TestProject"
+        return "TestProject"
     }
 }
 
