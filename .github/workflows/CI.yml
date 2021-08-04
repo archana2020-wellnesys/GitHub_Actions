@@ -1,0 +1,25 @@
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build-sample:
+
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Select xcodebuild
+      run: sudo xcode-select -switch /Applications/Xcode_12.4.app
+    
+    - name: Build Sample
+      run: xcodebuild clean build test -workspace App/TestProject.xcworkspace -scheme TestProject -destination "${destination}" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO
+    
+    - name: Run tests
+      run: swift test -v
+
