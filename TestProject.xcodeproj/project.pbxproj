@@ -583,7 +583,8 @@
 			baseConfigurationReference = 3626FFB6222F136CB82A8070 /* Pods-TestProject.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "Apple Development: Muralidhar Somisetty (958U3P4SWR)";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 9XAVP2V72K;
 				INFOPLIST_FILE = TestProject/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -593,6 +594,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.yogifi.applications;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = YogiFiApp_Development;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -603,7 +605,8 @@
 			baseConfigurationReference = E3DD9D4DC9395B01292DADE0 /* Pods-TestProject.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "Apple Development: Muralidhar Somisetty (958U3P4SWR)";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 9XAVP2V72K;
 				INFOPLIST_FILE = TestProject/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -613,6 +616,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.yogifi.applications;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = YogiFiApp_Development;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
