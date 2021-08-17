@@ -1,0 +1,18 @@
+//
+//  Production.xcconfig
+//  TestProject
+//
+//  Created by Devaraj N on 17/08/21.
+//  Copyright © 2021 Devaraj N. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+#include? "Pods/Target Support Files/Pods-TestProject/Pods-TestProject.production.xcconfig"
+
+BASE_URL = http:\/\/34.71.82.187\/
+
+APP_NAME = YogiFi (Prod)
+
+APP_BUNDLE_ID = com.yogifi.applications
