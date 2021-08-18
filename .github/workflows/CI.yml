@@ -27,7 +27,7 @@ jobs:
         PROVISION_ENCRYPTION_PWD: ${{ secrets.PROVISION_ENCRYPTION_PWD }}
         CERTS_EXPORT_PWD: ${{ secrets.CERTS_EXPORT_PWD }}
         KEYCHAIN: ${{ 'TestProject.keychain' }}
-        CODE_SIGN_IDENTITY_VAL: ${{ 'Apple Development: Muralidhar Somisetty (958U3P4SWR)' }}
+        CODE_SIGN_IDENTITY_VAL: ${{ 'Apple Development: Muralidhar Somisetty \(958U3P4SWR\)' }}
         MACOS_CERTIFICATE: ${{ secrets.MACOS_CERTIFICATE }}
         MACOS_CERTIFICATE_PWD: ${{ secrets.MACOS_CERTIFICATE_PWD }}
         
