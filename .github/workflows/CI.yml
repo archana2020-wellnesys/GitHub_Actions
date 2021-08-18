@@ -52,7 +52,7 @@ jobs:
         security import "$DECRYPTED_CERTS_FILE_PATH" -k "$KEYCHAIN" -P "$CERTS_EXPORT_PWD" -A -T /usr/bin/codesign
         security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k "" "$KEYCHAIN"
         security find-identity
-        /usr/bin/codesign --force -s "Apple Development: Muralidhar Somisetty (958U3P4SWR)" pwd -v
+        /usr/bin/codesign --force -s "Apple Development: Muralidhar Somisetty (958U3P4SWR)" ./TestProj -v
         tar xzvf $DECRYPTED_PROVISION_FILE_PATH
         mkdir -p "$HOME/Library/MobileDevice/Provisioning Profiles"
         for PROVISION in `ls ./*.mobileprovision`
