@@ -37,19 +37,16 @@ jobs:
     - name: Select xcodebuild
       run: sudo xcode-select -switch /Applications/Xcode_$XC_VERSION.app
     
-    - name: Configure Keychain
+    - name: Configure Code Signing
       run: |
+        gpg -d -o "$DECRYPTED_CERTS_FILE_PATH" --pinentry-mode=loopback --passphrase "$CERTS_ENCRYPTION_PWD" "$ENCRYPTED_CERTS_FILE_PATH"
+        gpg -d -o "$DECRYPTED_PROVISION_FILE_PATH" --pinentry-mode=loopback --passphrase "$PROVISION_ENCRYPTION_PWD" "$ENCRYPTED_PROVISION_FILE_PATH"
         security create-keychain -p "" "$KEYCHAIN"
         security list-keychains -s "$KEYCHAIN"
         security default-keychain -s "$KEYCHAIN"
         security unlock-keychain -p "" "$KEYCHAIN"
         security set-keychain-settings
         security list-keychains
-        
-    - name: Configure Code Signing
-      run: |
-        gpg -d -o "$DECRYPTED_CERTS_FILE_PATH" --pinentry-mode=loopback --passphrase "$CERTS_ENCRYPTION_PWD" "$ENCRYPTED_CERTS_FILE_PATH"
-        gpg -d -o "$DECRYPTED_PROVISION_FILE_PATH" --pinentry-mode=loopback --passphrase "$PROVISION_ENCRYPTION_PWD" "$ENCRYPTED_PROVISION_FILE_PATH"
         security import "$DECRYPTED_CERTS_FILE_PATH" -k "$KEYCHAIN" -P "$CERTS_EXPORT_PWD" -A -T /usr/bin/codesign
         security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k "" "$KEYCHAIN"
         security find-identity
