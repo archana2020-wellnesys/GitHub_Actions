@@ -29,7 +29,6 @@ jobs:
         KEYCHAIN: ${{ 'TestProject.keychain' }}
         MACOS_CERTIFICATE: ${{ secrets.MACOS_CERTIFICATE }}
         MACOS_CERTIFICATE_PWD: ${{ secrets.MACOS_CERTIFICATE_PWD }}
-        CODE_SIGN_IDENTITY_VALUEE: ${{ "Apple Development: Muralidhar Somisetty (958U3P4SWR)" }}
         
     steps:
     - uses: actions/checkout@v2
@@ -51,7 +50,7 @@ jobs:
         gpg -d -o "$DECRYPTED_CERTS_FILE_PATH" --pinentry-mode=loopback --passphrase "$CERTS_ENCRYPTION_PWD" "$ENCRYPTED_CERTS_FILE_PATH"
         gpg -d -o "$DECRYPTED_PROVISION_FILE_PATH" --pinentry-mode=loopback --passphrase "$PROVISION_ENCRYPTION_PWD" "$ENCRYPTED_PROVISION_FILE_PATH"
         security import "$DECRYPTED_CERTS_FILE_PATH" -k "$KEYCHAIN" -P "$CERTS_EXPORT_PWD" -A -T /usr/bin/codesign
-        security set-key-partition-list -S apple-tool:,apple: -s -k "" "$KEYCHAIN"
+        security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k "" "$KEYCHAIN"
         security find-identity
         tar xzvf $DECRYPTED_PROVISION_FILE_PATH
         mkdir -p "$HOME/Library/MobileDevice/Provisioning Profiles"
@@ -62,6 +61,6 @@ jobs:
         done
         
     - name: Build Sample
-      run: xcodebuild clean build -workspace $XC_WORKSPACE -scheme $XC_SCHEME -destination 'generic/platform=iOS' CODE_SIGN_IDENTITY="$CODE_SIGN_IDENTITY_VALUEE" CODE_SIGNING_REQUIRED=YES ONLY_ACTIVE_ARCH=NO
+      run: xcodebuild clean build -workspace $XC_WORKSPACE -scheme $XC_SCHEME -destination 'generic/platform=iOS' CODE_SIGN_IDENTITY='Apple Development: Muralidhar Somisetty (958U3P4SWR)' CODE_SIGNING_REQUIRED=YES ONLY_ACTIVE_ARCH=NO
     
 
