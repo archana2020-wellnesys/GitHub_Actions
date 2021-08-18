@@ -60,4 +60,3 @@ jobs:
     - name: Build Sample
       run: xcodebuild clean build -allowProvisioningUpdates -workspace $XC_WORKSPACE -scheme $XC_SCHEME -destination 'generic/platform=iOS' CODE_SIGN_IDENTITY="YogiFi_App_GithubAction_Development" CODE_SIGNING_REQUIRED=YES ONLY_ACTIVE_ARCH=NO
     
-
