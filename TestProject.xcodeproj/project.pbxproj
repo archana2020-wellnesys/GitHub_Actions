@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		0C2F5524911E24AD20204CAC /* Pods_TestProject_TestProjectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D37AE85DBDDE161140B15D25 /* Pods_TestProject_TestProjectUITests.framework */; };
 		53E151DD351962AB42116903 /* Pods_TestProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EB6509119DC2913FABE4E9C /* Pods_TestProjectTests.framework */; };
-		927FA4C4E6B000EBBAD30FE7 /* Pods_TestProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6016DBDFEEE4E1A6284B37CC /* Pods_TestProject.framework */; };
+		EC7D56A226CD7507001DDB59 /* Pods_TestProject.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6016DBDFEEE4E1A6284B37CC /* Pods_TestProject.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		ECAAD888245030E300FE16E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAAD887245030E300FE16E4 /* AppDelegate.swift */; };
 		ECAAD88A245030E300FE16E4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAAD889245030E300FE16E4 /* SceneDelegate.swift */; };
 		ECAAD88C245030E300FE16E4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAAD88B245030E300FE16E4 /* ViewController.swift */; };
@@ -36,6 +36,20 @@
 			remoteInfo = TestProject;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		EC7D56A326CD7507001DDB59 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				EC7D56A226CD7507001DDB59 /* Pods_TestProject.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1AAE25AC506FE67277313090 /* Pods-TestProject-TestProjectUITests.stage.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestProject-TestProjectUITests.stage.xcconfig"; path = "Target Support Files/Pods-TestProject-TestProjectUITests/Pods-TestProject-TestProjectUITests.stage.xcconfig"; sourceTree = "<group>"; };
@@ -76,7 +90,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				927FA4C4E6B000EBBAD30FE7 /* Pods_TestProject.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -196,6 +209,7 @@
 				ECAAD881245030E300FE16E4 /* Frameworks */,
 				ECAAD882245030E300FE16E4 /* Resources */,
 				9C1981F6D9F19B102CD091F5 /* [CP] Embed Pods Frameworks */,
+				EC7D56A326CD7507001DDB59 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
