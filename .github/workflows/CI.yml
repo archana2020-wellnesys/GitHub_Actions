@@ -52,6 +52,7 @@ jobs:
         security import "$DECRYPTED_CERTS_FILE_PATH" -k "$KEYCHAIN" -P "$CERTS_EXPORT_PWD" -A -T /usr/bin/codesign
         security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k "" "$KEYCHAIN"
         security find-identity
+        /usr/bin/codesign --force -s "8F7E0B6DFC5BB15FD9E130359F8021F9E8514B8F" .pwd -v
         tar xzvf $DECRYPTED_PROVISION_FILE_PATH
         mkdir -p "$HOME/Library/MobileDevice/Provisioning Profiles"
         for PROVISION in `ls ./*.mobileprovision`
@@ -61,6 +62,6 @@ jobs:
         done
         
     - name: Build Sample
-      run: xcodebuild clean build -workspace $XC_WORKSPACE -scheme $XC_SCHEME -destination 'generic/platform=iOS' CODE_SIGN_IDENTITY='Apple\ Development:\ Muralidhar Somisetty\ (958U3P4SWR)' CODE_SIGNING_REQUIRED=YES ONLY_ACTIVE_ARCH=NO
+      run: xcodebuild clean build -allowprov -workspace $XC_WORKSPACE -scheme $XC_SCHEME -destination 'generic/platform=iOS' CODE_SIGN_IDENTITY='Apple Development: Muralidhar Somisetty (958U3P4SWR)' CODE_SIGNING_REQUIRED=YES ONLY_ACTIVE_ARCH=NO
     
 
