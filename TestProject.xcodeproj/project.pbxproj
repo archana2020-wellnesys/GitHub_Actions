@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		0C2F5524911E24AD20204CAC /* Pods_TestProject_TestProjectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D37AE85DBDDE161140B15D25 /* Pods_TestProject_TestProjectUITests.framework */; };
 		53E151DD351962AB42116903 /* Pods_TestProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EB6509119DC2913FABE4E9C /* Pods_TestProjectTests.framework */; };
-		EC7D56A226CD7507001DDB59 /* Pods_TestProject.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6016DBDFEEE4E1A6284B37CC /* Pods_TestProject.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		EC7D56A426CD7608001DDB59 /* Pods_TestProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6016DBDFEEE4E1A6284B37CC /* Pods_TestProject.framework */; };
 		ECAAD888245030E300FE16E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAAD887245030E300FE16E4 /* AppDelegate.swift */; };
 		ECAAD88A245030E300FE16E4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAAD889245030E300FE16E4 /* SceneDelegate.swift */; };
 		ECAAD88C245030E300FE16E4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAAD88B245030E300FE16E4 /* ViewController.swift */; };
@@ -44,7 +44,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				EC7D56A226CD7507001DDB59 /* Pods_TestProject.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -90,6 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC7D56A426CD7608001DDB59 /* Pods_TestProject.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
