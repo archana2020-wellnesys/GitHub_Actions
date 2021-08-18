@@ -14,8 +14,8 @@ jobs:
     env:
         XC_VERSION: ${{ '12.4' }}
         XC_WORKSPACE: ${{ 'TestProject.xcworkspace' }}
-        XC_SCHEME: ${{ 'TestProject' }}
-        XC_CONFIGURATION: ${{ 'Release' }}
+        XC_SCHEME: ${{ 'TestProjectStage' }}
+        XC_CONFIGURATION: ${{ 'Stage' }}
         XC_ARCHIVE_PATH: ${{ './TestProject.xcarchive' }}
         XC_EXPORT_PATH: ${{ './artifacts/' }}
         XC_EXPORT_OPTIONS_FILE_PATH: ${{ './ExportOptions.plist' }}
@@ -58,6 +58,6 @@ jobs:
         done
         
     - name: Build Sample
-      run: xcodebuild clean build -allowProvisioningUpdates -workspace $XC_WORKSPACE -scheme $XC_SCHEME -destination 'generic/platform=iOS' CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=YES ONLY_ACTIVE_ARCH=NO
+      run: xcodebuild clean build -allowProvisioningUpdates -workspace $XC_WORKSPACE -scheme $XC_SCHEME -destination 'generic/platform=iOS' CODE_SIGN_IDENTITY="YogiFi_App_GithubAction_Development" CODE_SIGNING_REQUIRED=YES ONLY_ACTIVE_ARCH=NO
     
 
