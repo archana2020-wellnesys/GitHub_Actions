@@ -10,12 +10,16 @@ jobs:
   build-sample:
 
     runs-on: macos-latest
-
+    
+    env:
+        XC_VERSION: ${{ '12.4' }}
+        XC_WORKSPACE: ${{ 'TestProject.xcworkspace' }}
+        XC_SCHEME: ${{ 'TestProject' }}
     steps:
     - uses: actions/checkout@v2
     
     - name: Select xcodebuild
-      run: sudo xcode-select -switch /Applications/Xcode_12.4.app
+      run: sudo xcode-select -switch /Applications/Xcode_XC_VERSION.app
     
     - name: Build Sample
       run: xcodebuild clean build -allowProvisioningUpdates -workspace TestProject.xcworkspace -scheme TestProject -destination 'generic/platform=iOS' CODE_SIGN_IDENTITY="Apple Development" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO
