@@ -20,8 +20,7 @@ jobs:
         XC_EXPORT_PATH: ${{ './artifacts/' }}
         XC_EXPORT_OPTIONS_FILE_PATH: ${{ './ExportOptions.plist' }}
         ENCRYPTED_CERTS_FILE_PATH: ${{ './certs.p12.gpg' }}
-        DECRYPTED_CERTS_FILE_PATH: ${{ './certs' }}
-        POST_DECRYPTED_CERTS_FILE_PATH: ${{ './certs/certs.p12' }}
+        DECRYPTED_CERTS_FILE_PATH: ${{ './certs.p12' }}
         ENCRYPTED_PROVISION_FILE_PATH: ${{ './provisioning.tar.gz.gpg' }}
         DECRYPTED_PROVISION_FILE_PATH: ${{ './provisioning.tar.gz' }}
         CERTS_ENCRYPTION_PWD: ${{ secrets.CERTS_ENCRYPTION_PWD }}
@@ -48,7 +47,7 @@ jobs:
       run: |
         gpg -d -o "$DECRYPTED_CERTS_FILE_PATH" --pinentry-mode=loopback --passphrase "$CERTS_ENCRYPTION_PWD" "$ENCRYPTED_CERTS_FILE_PATH"
         gpg -d -o "$DECRYPTED_PROVISION_FILE_PATH" --pinentry-mode=loopback --passphrase "$PROVISION_ENCRYPTION_PWD" "$ENCRYPTED_PROVISION_FILE_PATH"
-        security import "$POST_DECRYPTED_CERTS_FILE_PATH" -k "$KEYCHAIN" -P "$CERTS_EXPORT_PWD" -A
+        security import "$DECRYPTED_CERTS_FILE_PATH" -k "$KEYCHAIN" -P "$CERTS_EXPORT_PWD" -A
         security set-key-partition-list -S apple-tool:,apple: -s -k "" "$KEYCHAIN"
         tar xzvf $DECRYPTED_PROVISION_FILE_PATH
         mkdir -p "$HOME/Library/MobileDevice/Provisioning Profiles"
