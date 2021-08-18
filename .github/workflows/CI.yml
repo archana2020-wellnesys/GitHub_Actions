@@ -19,9 +19,9 @@ jobs:
     - uses: actions/checkout@v2
     
     - name: Select xcodebuild
-      run: sudo xcode-select -switch /Applications/Xcode_XC_VERSION.app
+      run: sudo xcode-select -switch /Applications/Xcode_$XC_VERSION.app
     
     - name: Build Sample
-      run: xcodebuild clean build -allowProvisioningUpdates -workspace TestProject.xcworkspace -scheme TestProject -destination 'generic/platform=iOS' CODE_SIGN_IDENTITY="Apple Development" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO
+      run: xcodebuild clean build -allowProvisioningUpdates -workspace $XC_WORKSPACE -scheme XC_SCHEME -destination 'generic/platform=iOS' CODE_SIGN_IDENTITY="Apple Development" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO
     
 
