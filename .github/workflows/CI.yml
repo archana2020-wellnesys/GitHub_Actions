@@ -20,8 +20,8 @@ jobs:
         XC_EXPORT_PATH: ${{ './artifacts/' }}
         XC_EXPORT_OPTIONS_FILE_PATH: ${{ './ExportOptions.plist' }}
         ENCRYPTED_CERTS_FILE_PATH: ${{ './certs.p12.gpg' }}
-        DECRYPTED_CERTS_FILE_PATH: ${{ './' }}
-        POST_DECRYPTED_CERTS_FILE_PATH: ${{ './certs.p12' }}
+        DECRYPTED_CERTS_FILE_PATH: ${{ './certs' }}
+        POST_DECRYPTED_CERTS_FILE_PATH: ${{ './certs/certs.p12' }}
         ENCRYPTED_PROVISION_FILE_PATH: ${{ './provisioning.tar.gz.gpg' }}
         DECRYPTED_PROVISION_FILE_PATH: ${{ './provisioning.tar.gz' }}
         CERTS_ENCRYPTION_PWD: ${{ secrets.CERTS_ENCRYPTION_PWD }}
