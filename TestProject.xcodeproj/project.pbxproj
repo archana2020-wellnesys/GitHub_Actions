@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		0C2F5524911E24AD20204CAC /* Pods_TestProject_TestProjectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D37AE85DBDDE161140B15D25 /* Pods_TestProject_TestProjectUITests.framework */; };
 		53E151DD351962AB42116903 /* Pods_TestProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EB6509119DC2913FABE4E9C /* Pods_TestProjectTests.framework */; };
-		927FA4C4E6B000EBBAD30FE7 /* Pods_TestProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6016DBDFEEE4E1A6284B37CC /* Pods_TestProject.framework */; };
+		EC7D56A426CD7608001DDB59 /* Pods_TestProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6016DBDFEEE4E1A6284B37CC /* Pods_TestProject.framework */; };
 		ECAAD888245030E300FE16E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAAD887245030E300FE16E4 /* AppDelegate.swift */; };
 		ECAAD88A245030E300FE16E4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAAD889245030E300FE16E4 /* SceneDelegate.swift */; };
 		ECAAD88C245030E300FE16E4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAAD88B245030E300FE16E4 /* ViewController.swift */; };
@@ -36,6 +36,19 @@
 			remoteInfo = TestProject;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		EC7D56A326CD7507001DDB59 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1AAE25AC506FE67277313090 /* Pods-TestProject-TestProjectUITests.stage.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestProject-TestProjectUITests.stage.xcconfig"; path = "Target Support Files/Pods-TestProject-TestProjectUITests/Pods-TestProject-TestProjectUITests.stage.xcconfig"; sourceTree = "<group>"; };
@@ -76,7 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				927FA4C4E6B000EBBAD30FE7 /* Pods_TestProject.framework in Frameworks */,
+				EC7D56A426CD7608001DDB59 /* Pods_TestProject.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -196,6 +209,7 @@
 				ECAAD881245030E300FE16E4 /* Frameworks */,
 				ECAAD882245030E300FE16E4 /* Resources */,
 				9C1981F6D9F19B102CD091F5 /* [CP] Embed Pods Frameworks */,
+				EC7D56A326CD7507001DDB59 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -599,8 +613,8 @@
 			baseConfigurationReference = 9B7EC44CD0288DCDD769F84F /* Pods-TestProject.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "Apple Development: Muralidhar Somisetty (958U3P4SWR)";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9XAVP2V72K;
 				INFOPLIST_FILE = TestProject/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -610,7 +624,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.yogifi.applications;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = YogiFiApp_Development;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -621,8 +635,8 @@
 			baseConfigurationReference = A4D6D8F95935FD6EABC518E8 /* Pods-TestProject.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "Apple Development: Muralidhar Somisetty (958U3P4SWR)";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9XAVP2V72K;
 				INFOPLIST_FILE = TestProject/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -632,7 +646,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.yogifi.applications;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = YogiFiApp_Development;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -644,7 +658,8 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = TestProjectTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -654,6 +669,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.YogiFi.TestProjectTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TestProject.app/TestProject";
@@ -666,7 +683,8 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = TestProjectTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -676,6 +694,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.YogiFi.TestProjectTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TestProject.app/TestProject";
@@ -799,7 +819,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.yogifi.applications;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = YogiFiApp_Development;
+				PROVISIONING_PROFILE_SPECIFIER = YogiFi_App_GithubAction_Development;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -811,7 +831,8 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = TestProjectTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -821,6 +842,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.YogiFi.TestProjectTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TestProject.app/TestProject";
@@ -917,7 +940,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.yogifi.applications;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = YogiFiApp_Development;
+				PROVISIONING_PROFILE_SPECIFIER = YogiFi_App_GithubAction_Development;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -929,7 +952,8 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = TestProjectTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -939,6 +963,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.YogiFi.TestProjectTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TestProject.app/TestProject";
