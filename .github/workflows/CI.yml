@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: [ ProdNStageSwitchUsingConfig  ]
+    branches: [ ActionScript ]
   pull_request:
     branches: [ master ]
 
@@ -63,5 +63,4 @@ jobs:
     - name: Build Sample
       run: xcodebuild clean build -allowprov -workspace $XC_WORKSPACE -scheme $XC_SCHEME -destination 'generic/platform=iOS' CODE_SIGN_IDENTITY="Apple Development" CODE_SIGNING_REQUIRED=YES ONLY_ACTIVE_ARCH=NO
     
-
 
