@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [ ProdNStageSwitchUsingConfig  ]
   pull_request:
     branches: [ master ]
 
@@ -10,14 +10,57 @@ jobs:
   build-sample:
 
     runs-on: macos-latest
-
+    
+    env:
+        XC_VERSION: ${{ '12.4' }}
+        XC_WORKSPACE: ${{ 'TestProject.xcworkspace' }}
+        XC_SCHEME: ${{ 'TestProjectStage' }}
+        XC_CONFIGURATION: ${{ 'Stage' }}
+        XC_ARCHIVE_PATH: ${{ './TestProject.xcarchive' }}
+        XC_EXPORT_PATH: ${{ './artifacts/' }}
+        CURRENT_PATH: ${{'./'}}
+        XC_EXPORT_OPTIONS_FILE_PATH: ${{ './ExportOptions.plist' }}
+        ENCRYPTED_CERTS_FILE_PATH: ${{ './certsNew.p12.gpg' }}
+        DECRYPTED_CERTS_FILE_PATH: ${{ './certsNew.p12' }}
+        ENCRYPTED_PROVISION_FILE_PATH: ${{ './provisioning.tar.gz.gpg' }}
+        DECRYPTED_PROVISION_FILE_PATH: ${{ './provisioning.tar.gz' }}
+        CERTS_ENCRYPTION_PWD: ${{ secrets.CERTS_ENCRYPTION_PWD }}
+        PROVISION_ENCRYPTION_PWD: ${{ secrets.PROVISION_ENCRYPTION_PWD }}
+        CERTS_EXPORT_PWD: ${{ secrets.CERTS_EXPORT_PWD }}
+        KEYCHAIN: ${{ 'TestProject.keychain' }}
+        MACOS_CERTIFICATE: ${{ secrets.MACOS_CERTIFICATE }}
+        MACOS_CERTIFICATE_PWD: ${{ secrets.MACOS_CERTIFICATE_PWD }}
+        
     steps:
     - uses: actions/checkout@v2
     
     - name: Select xcodebuild
-      run: sudo xcode-select -switch /Applications/Xcode_12.4.app
+      run: sudo xcode-select -switch /Applications/Xcode_$XC_VERSION.app
     
+    - name: Configure Code Signing
+      run: |
+        gpg -d -o "$DECRYPTED_CERTS_FILE_PATH" --pinentry-mode=loopback --passphrase "$CERTS_ENCRYPTION_PWD" "$ENCRYPTED_CERTS_FILE_PATH"
+        gpg -d -o "$DECRYPTED_PROVISION_FILE_PATH" --pinentry-mode=loopback --passphrase "$PROVISION_ENCRYPTION_PWD" "$ENCRYPTED_PROVISION_FILE_PATH"
+        security create-keychain -p "" "$KEYCHAIN"
+        security list-keychains -s "$KEYCHAIN"
+        security default-keychain -s "$KEYCHAIN"
+        security unlock-keychain -p "" "$KEYCHAIN"
+        security set-keychain-settings
+        security list-keychains
+        security import "$DECRYPTED_CERTS_FILE_PATH" -k "$KEYCHAIN" -P "$CERTS_EXPORT_PWD" -A -T /usr/bin/codesign
+        security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k "" "$KEYCHAIN"
+        security find-identity
+        echo $PWD
+        /usr/bin/codesign --force -s "Apple Development: Muralidhar Somisetty (958U3P4SWR)" $PWD
+        tar xzvf $DECRYPTED_PROVISION_FILE_PATH
+        mkdir -p "$HOME/Library/MobileDevice/Provisioning Profiles"
+        for PROVISION in `ls ./*.mobileprovision`
+        do
+          UUID=`/usr/libexec/PlistBuddy -c 'Print :UUID' /dev/stdin <<< $(security cms -D -i ./$PROVISION)`
+          cp "./$PROVISION" "$HOME/Library/MobileDevice/Provisioning Profiles/$UUID.mobileprovision"
+        done
+        
     - name: Build Sample
-      run: xcodebuild clean build -allowProvisioningUpdates -workspace TestProject.xcworkspace -scheme TestProject -destination 'generic/platform=iOS' CODE_SIGN_IDENTITY="Apple Development" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO
+      run: xcodebuild clean build -allowprov -workspace $XC_WORKSPACE -scheme $XC_SCHEME -destination 'generic/platform=iOS' CODE_SIGN_IDENTITY="Apple Development" CODE_SIGNING_REQUIRED=YES ONLY_ACTIVE_ARCH=NO
     
 
